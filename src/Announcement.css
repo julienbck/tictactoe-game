@@ -1,0 +1,10 @@
+.hidden{
+  display: none;
+}
+.topBar {
+  height: 50px;
+  background-color: #FFF;
+  text-align: center;
+  width: 100%;
+  color: #6c2f2f;
+}

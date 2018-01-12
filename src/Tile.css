@@ -1,0 +1,52 @@
+.tile {
+  width: 30%;
+  height: 100px;
+  font-size: 50pt;
+  float: left;
+  color:#3b6786;
+  text-align: center;
+}
+
+.tile > .playero{
+  text-shadow: 0px 5px  #FFF, -1px -1px  #FFF, 1px 1px #FFF, 1px -1px #FFF;
+  font-weight: bold;
+  font-family: "arial black";
+  margin-top: -10px;
+}
+.tile > .playerx {
+  text-shadow: 0px 4px  #FFF,0px 3px 0px #FFF,0px 2px #FFF,0px 1px 1px #FFF, -1px -1px 1px #FFF, 1px 1px #FFF, 1px -1px #FFF;
+  font-weight: bold;
+  font-family: "arial black";
+  margin-top: -10px;
+}
+
+.item0 {
+  border-bottom: 5px solid #FFF;
+  border-right: 5px solid #FFF;
+}
+.item1 {
+  border-bottom: 5px solid #FFF;
+  border-right: 5px solid #FFF;
+
+}
+.item2 {
+  border-bottom: 5px solid #FFF;
+}
+.item3 {
+  border-bottom: 5px solid #FFF;
+  border-right: 5px solid #FFF;
+}
+.item4 {
+  border-bottom: 5px solid #FFF;
+  border-right: 5px solid #FFF;
+}
+.item5 {
+  border-bottom: 5px solid #FFF;
+}
+.item6 {
+  border-right: 5px solid #FFF;
+}
+.item7 {
+  border-right: 5px solid #FFF;
+  margin-bottom: 20px;
+}

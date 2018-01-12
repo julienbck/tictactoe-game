@@ -1,0 +1,94 @@
+body {
+  background-color: #2f536c;
+}
+
+.menu {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  width: 100%;
+  color: #FFF;
+  background-color: #FFF;
+}
+.contentBoard{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width:50%;
+  height: 100%;
+}
+.Logo {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+}
+.ButtonToPlayerIs{
+  width: 100%;
+  height: 50px;
+  margin-bottom: 50px;
+  color: #FFF;
+  box-shadow: 0px 10px 10px #000 inset;
+  float:left;
+  text-transform: uppercase;
+  background-color: #2f536c;
+  font-weight: bold;
+  border: none;
+  bottom: 0;
+  outline: none;
+  font-size: 1em;
+}
+.ButtonToPlayerIs:hover{
+  color: #2f536c;
+
+  background-color: #FFF;
+  transition: background-color 0.2s
+}
+.resetButton, .resetButton2{
+  width: 50%;
+  height: 50px;
+  color: #FFF;
+  float:left;
+  text-transform: uppercase;
+  background-color: #2f536c;
+  font-weight: bold;
+  border: none;
+  bottom: 0;
+  outline: none;
+  font-size: 1em;
+}
+.resetButton3{
+  width: 50%;
+  height: 50px;
+  color: #2f536c;
+  float:left;
+  box-shadow: 0 6px 4px -2px #000;
+  text-transform: uppercase;
+  background-color: #FFF;
+  font-weight: bold;
+  border: none;
+  bottom: 0;
+  outline: none;
+  font-size: 1em;
+}
+.resetButton:hover, .resetButton2:hover{
+  color: #2f536c;
+
+  background-color: #FFF;
+  transition: background-color 0.2s
+}
+.infoPlayer{
+  border-radius: 5px;
+  margin-top: 50px;
+  padding-top: 10px;
+  width: 50%;
+  float: right;
+  height: 50px;
+  background-color: #B70C0C;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFF;
+  bottom: 0;
+}
+.InfoZone {
+}
