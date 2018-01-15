@@ -11,6 +11,8 @@ function Tile(props) {
     textTileClass += props.value === 'x' ? ' playerx' : ' playero'
   }
 
+
+
   return(
     <div
       className={tileClass}

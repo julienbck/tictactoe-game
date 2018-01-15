@@ -18,17 +18,22 @@ class Board extends Component {
       ],
       turn: 'o',
       winner: null,
-      counterplayer: {x: 0, o: 0}
+      counterplayer: {x: 0, o: 0},
+      counterNumberOfClick: {x: 0, o: 0},
+      popupTarget: ''
     }
   }
-
   count(winner) {
     let counter = this.state.counterplayer;
     counter[winner] = counter[winner] + 1;
 
     return counter;
   }
-
+  numberOfClickUpdate (turn){
+    let counterNumber = this.state.counterNumberOfClick;
+    counterNumber[turn] = counterNumber[turn] + 1;
+    return counterNumber;
+  }
   updateBoard(loc, player){
     if(this.state.gameBoard[loc] === 'x' || this.state.gameBoard[loc] === 'o' || this.state.winner){
       //invalid move
@@ -37,66 +42,20 @@ class Board extends Component {
     let currentGameBoard = this.state.gameBoard;
     currentGameBoard.splice(loc, 1, this.state.turn);
     this.setState({
-      gameBoard: currentGameBoard
+      gameBoard: currentGameBoard,
+      counterNumberOfClick: this.numberOfClickUpdate(this.state.turn)
     });
     let topRow = this.state.gameBoard[0] + this.state.gameBoard[1] + this.state.gameBoard[2];
-    if(topRow.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let middleRow = this.state.gameBoard[3] + this.state.gameBoard[4] + this.state.gameBoard[5];
-    if(middleRow.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let bottomRow = this.state.gameBoard[6] + this.state.gameBoard[7] + this.state.gameBoard[8];
-    if(bottomRow.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let leftCol = this.state.gameBoard[0] + this.state.gameBoard[3] + this.state.gameBoard[6];
-    if(leftCol.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let middleCol = this.state.gameBoard[1] + this.state.gameBoard[4] + this.state.gameBoard[7];
-    if(middleCol.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let rightCol = this.state.gameBoard[2] + this.state.gameBoard[5] + this.state.gameBoard[8];
-    if(rightCol.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let leftDiag = this.state.gameBoard[0] + this.state.gameBoard[4] + this.state.gameBoard[8];
-    if(leftDiag.match(/xxx|ooo/)){
-      this.setState({
-        winner: this.state.turn,
-        counterplayer: this.count(this.state.turn)
-      });
-      return;
-    }
     let rightDiag = this.state.gameBoard[2] + this.state.gameBoard[4] + this.state.gameBoard[6];
-    if(rightDiag.match(/xxx|ooo/)){
+
+    if(topRow.match(/xxx|ooo/) || middleRow.match(/xxx|ooo/) || bottomRow.match(/xxx|ooo/)  ||leftCol.match(/xxx|ooo/)|| middleCol.match(/xxx|ooo/) || rightCol.match(/xxx|ooo/) ||
+    leftDiag.match(/xxx|ooo/) || rightDiag.match(/xxx|ooo/)) {
       this.setState({
         winner: this.state.turn,
         counterplayer: this.count(this.state.turn)
@@ -113,17 +72,6 @@ class Board extends Component {
       turn: (this.state.turn === 'o') ? 'x':'o'
     });
   }
-//   counterVictory(){
-//     if(this.state.winner === "x"){
-//       this.setState({
-//         counterplayerx: (this.state.counterplayerx + 1)
-//       })
-//     } else if (this.state.winner === "o"){
-//       this.setState({
-//         counterplayero: (this.state.counterplayero + 1)
-//     })
-//   }
-// }
   resetBoard(){
     this.setState({
       gameBoard:[
@@ -132,7 +80,8 @@ class Board extends Component {
       ' ', ' ', ' '
     ],
     turn: 'x',
-    winner: null
+    winner: null,
+    counterNumberOfClick: {x: 0, o: 0}
   });
   }
   resetScores() {
@@ -145,11 +94,13 @@ class Board extends Component {
     <div className="container">
       <div className="menu">
       <img src={Logo} className="Logo"></img>
+      </div>
       <Announcement
         winner={this.state.winner}
         turn={this.state.turn}
+        numberOfClickToWinX={this.state.counterNumberOfClick.x}
+        numberOfClickToWinO={this.state.counterNumberOfClick.o}
         />
-      </div>
       <button className="ButtonToPlayerIs"> Is to Player {this.state.turn}</button>
       <div className="contentBoard">
       {this.state.gameBoard.map(function(value, i){
@@ -160,6 +111,7 @@ class Board extends Component {
           value={value}
           updateBoard={this.updateBoard.bind(this)}
           turn={this.state.turn}
+          numberOfClick= {this.numberOfClick}
           />
         )}.bind(this))}
         </div>
